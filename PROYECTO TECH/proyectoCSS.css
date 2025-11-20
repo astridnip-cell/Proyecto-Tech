@@ -1,0 +1,102 @@
+:root {
+    --primary-color: #FFA726;
+    --secondary-color: #1565C0;
+    --dark-color: #263238;
+    --light-color: #ECEFF1;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Pantalla de Bienvenida */
+.welcome-screen {
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.welcome-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.welcome-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+/* Navbar y Hero */
+.navbar {
+    background-color: var(--dark-color);
+}
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Botones y Utilidades */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #F57C00;
+    border-color: #F57C00;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 10px auto;
+}
+
+/* Animación suave */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

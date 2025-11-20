@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energía Solar - Futuro Sostenible</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="./proyectoCSS.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         MODALES (Login y Registro)
+    ========================================== -->
+    
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Regístrate aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crear Cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label for="firstName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="lastName" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" required minlength="6">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>¿Ya tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Inicia sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         PANTALLA DE BIENVENIDA (Sin Loguear)
+    ========================================== -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-lg-6 text-center">
+                    <div class="welcome-card">
+                        <i class="fas fa-sun welcome-icon"></i>
+                        <h1 class="welcome-title">Bienvenido a Energía Solar</h1>
+                        <p class="welcome-text">Accede a información exclusiva sobre energía limpia, datos históricos y herramientas de cálculo para un futuro sostenible.</p>
+                        <div class="welcome-buttons">
+                            <button class="btn btn-primary btn-lg me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                Iniciar Sesión
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                Registrarse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         CONTENIDO PRINCIPAL (Logueado)
+    ========================================== -->
+    <div id="mainContent" class="d-none">
+        
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><i class="fas fa-sun me-2"></i>Energía Solar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#datos">Datos Históricos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#calculadora">Calculadora</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user me-1"></i> <span id="userName">Usuario</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="inicio">
+            <div class="container">
+                <h1>El Futuro es Brillante</h1>
+                <p>Explora los datos globales de energía renovable y calcula tu impacto positivo en el medio ambiente.</p>
+                <a href="#datos" class="btn btn-primary btn-lg">Ver Datos Globales</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: TABLA DE DATOS (REQUISITO 2 PARTE A) -->
+        <section id="datos" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="section-title">Datos Históricos (1965 - 2022)</h2>
+                    <p>Registro global de capacidad instalada y generación por fuente de energía.</p>
+                </div>
+                
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <!-- Tabla con scroll -->
+                        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                            <table class="table table-hover text-center align-middle">
+                                <thead class="table-dark sticky-top">
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Solar (TWh)</th>
+                                        <th>Eólica (TWh)</th>
+                                        <th>Hidro (TWh)</th>
+                                        <th>Otras Renov. (TWh)</th>
+                                        <th>Total Renovable</th>
+                                        <th>Total Generado</th>
+                                        <th>% Renovable</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                    <!-- Se llena con JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CALCULADORA (REQUISITO 2 PARTE B) -->
+        <section id="calculadora" class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-header bg-primary text-white p-4 text-center">
+                                <h3 class="mb-0"><i class="fas fa-calculator me-2"></i>Calculadora de Impacto</h3>
+                            </div>
+                            <div class="card-body p-5">
+                                <p class="text-center mb-4">
+                                    Ingresa tu consumo eléctrico (kWh) para estimar cuánto correspondería a fuentes renovables basado en la capacidad global actual (Datos 2022).
+                                </p>
+                                
+                                <form id="calculatorForm">
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold">Tu Consumo Eléctrico Total</label>
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-text"><i class="fas fa-plug"></i></span>
+                                            <input type="number" class="form-control" id="userConsumption" placeholder="Ej: 350" required min="1">
+                                            <span class="input-group-text">kWh</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-success btn-lg">Calcular</button>
+                                    </div>
+                                </form>
+
+                                <!-- Resultado -->
+                                <div id="resultCard" class="mt-4 d-none animate-fade-in">
+                                    <div class="alert alert-info border-0 text-center">
+                                        <h4>Resultado Estimado</h4>
+                                        <hr>
+                                        <div class="row mt-3">
+                                            <div class="col-6">
+                                                <small class="text-muted">Capacidad Global</small>
+                                                <div class="h4" id="globalCapacityVal">0 TWh</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <small class="text-muted">% Renovable Global</small>
+                                                <div class="h4 text-primary" id="globalPercentVal">0%</div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white p-3 rounded mt-3 shadow-sm">
+                                            <p class="mb-1">De tus <strong id="userInputVal">0</strong> kWh consumidos:</p>
+                                            <h2 class="text-success fw-bold">
+                                                <i class="fas fa-leaf"></i> <span id="userRenewableVal">0</span> kWh
+                                            </h2>
+                                            <small class="text-muted">Provienen de fuentes limpias.</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer text-center py-4 bg-dark text-white">
+            <div class="container">
+                <p class="mb-0">&copy; 2023 Energía Solar. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./proyectoJS.js"></script>
+</body>
+</html>
